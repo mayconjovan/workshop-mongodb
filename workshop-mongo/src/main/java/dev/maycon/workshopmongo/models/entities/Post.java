@@ -1,7 +1,7 @@
 package dev.maycon.workshopmongo.models.entities;
 
-import dev.maycon.workshopmongo.models.entities.embedded.Author;
-import dev.maycon.workshopmongo.models.entities.embedded.Comment;
+import dev.maycon.workshopmongo.models.embedded.Author;
+import dev.maycon.workshopmongo.models.embedded.Comment;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

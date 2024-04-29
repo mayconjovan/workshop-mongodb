@@ -1,4 +1,4 @@
-package dev.maycon.workshopmongo.models.entities.embedded;
+package dev.maycon.workshopmongo.models.embedded;
 
 import java.time.Instant;
 
