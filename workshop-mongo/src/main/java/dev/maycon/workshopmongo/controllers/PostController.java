@@ -29,5 +29,13 @@ public class PostController {
         return ResponseEntity.ok().body(post);
     }
 
+    @GetMapping(value = "/fullsearch")
+    public ResponseEntity<List<PostDTO>> findByFullText(
+            @RequestParam(value = "text", defaultValue = "") String text,
+            @RequestParam(value = "title", defaultValue = "") String start,
+            @RequestParam(value = "end", defaultValue = "") String end) {
+        List<PostDTO> post = service.fullSearch(text, start, end);
+        return ResponseEntity.ok().body(post);
+    }
 
 }
