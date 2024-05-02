@@ -4,9 +4,7 @@ import dev.maycon.workshopmongo.models.dto.UserDTO;
 import dev.maycon.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,11 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = service.findAll();
         return ResponseEntity.ok().body(users);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable String id) {
+        UserDTO user = service.findById(id);
+        return ResponseEntity.ok().body(user);
     }
 }
