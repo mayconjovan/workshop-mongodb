@@ -1,10 +1,10 @@
 package dev.maycon.workshopmongo.services;
 
+import dev.maycon.workshopmongo.models.dto.PostDTO;
 import dev.maycon.workshopmongo.models.dto.UserDTO;
 import dev.maycon.workshopmongo.models.entities.User;
 import dev.maycon.workshopmongo.repositories.UserRepository;
 import dev.maycon.workshopmongo.services.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,6 +48,11 @@ public class UserService {
     public void delete(String id) {
         getEntityById(id);
         userRepository.deleteById(id);
+    }
+
+    public List<PostDTO> getUserPosts(String id) {
+        User entity = getEntityById(id);
+        return entity.getPosts().stream().map(PostDTO::new).toList();
     }
 
     private User getEntityById(String id) {

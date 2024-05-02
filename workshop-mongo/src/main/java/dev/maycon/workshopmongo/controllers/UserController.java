@@ -1,8 +1,8 @@
 package dev.maycon.workshopmongo.controllers;
 
+import dev.maycon.workshopmongo.models.dto.PostDTO;
 import dev.maycon.workshopmongo.models.dto.UserDTO;
 import dev.maycon.workshopmongo.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -49,6 +49,12 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<PostDTO>> getPostsByUser(@PathVariable String id) {
+        List<PostDTO> posts = service.getUserPosts(id);
+        return ResponseEntity.ok().body(posts);
     }
 
 }
