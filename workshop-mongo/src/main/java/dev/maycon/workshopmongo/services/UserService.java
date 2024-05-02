@@ -46,7 +46,8 @@ public class UserService {
     }
 
     public void delete(String id) {
-
+        getEntityById(id);
+        userRepository.deleteById(id);
     }
 
     private User getEntityById(String id) {
