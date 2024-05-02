@@ -12,8 +12,13 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
+
     private UserRepository userRepository;
+
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<UserDTO> findAll() {
         List<User> users = userRepository.findAll();
@@ -26,4 +31,25 @@ public class UserService {
 
         return new UserDTO(entity);
     }
+
+    public UserDTO insert(UserDTO userDTO) {
+        User entity = new User();
+        copyDtoToEntity(userDTO, entity);
+        entity = userRepository.insert(entity);
+        return new UserDTO(entity);
+    }
+
+    public UserDTO update(UserDTO userDTO) {
+        return null;
+    }
+
+    public void delete(String id) {
+
+    }
+
+    private void copyDtoToEntity(UserDTO dto, User user) {
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+    }
+
 }
