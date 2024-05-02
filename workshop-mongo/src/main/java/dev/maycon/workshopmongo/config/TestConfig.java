@@ -7,7 +7,6 @@ import dev.maycon.workshopmongo.models.entities.User;
 import dev.maycon.workshopmongo.repositories.PostRepository;
 import dev.maycon.workshopmongo.repositories.UserRepository;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
